@@ -5,6 +5,127 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KumoNest</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* アプリセクション */
+    .apps-section {
+      max-width: 1000px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 48px;
+    }
+
+    .app-card {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      background: white;
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      margin-bottom: 32px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .app-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    }
+
+    .app-card.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .app-card-image {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .app-card-image img {
+      width: 100%;
+      border-radius: 16px;
+      display: block;
+    }
+
+    .app-card-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .app-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: #f0f0f0;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .app-card-text h3 {
+      font-size: 26px;
+      font-weight: 700;
+      margin: 0 0 12px;
+      color: #111;
+      line-height: 1.3;
+    }
+
+    .app-card-text p {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.7;
+      margin: 0 0 24px;
+    }
+
+    .app-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .app-features li {
+      font-size: 14px;
+      color: #444;
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .app-features li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #111;
+      flex-shrink: 0;
+    }
+
+    /* ヒーロー調整 */
+    .hero {
+      padding-bottom: 0;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 700px) {
+      .app-card {
+        flex-direction: column !important;
+        padding: 28px;
+        gap: 28px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -18,12 +139,51 @@
   </div>
 </header>
 
-<main class="hero">
-  <div class="hero-content">
-    <h2>スマートに学ぶ、新しい体験</h2>
-    <p>あなたの学習をシンプルに、効率的に。</p>
+<main>
+  <div class="hero">
+    <div class="hero-content">
+      <h2>スマートに学ぶ、新しい体験</h2>
+      <p>あなたの学習をシンプルに、効率的に。</p>
+    </div>
   </div>
-  <img src="image.jpg" alt="アプリ画像" class="hero-image">
+
+  <div class="apps-section">
+    <p class="section-label">Our Apps</p>
+
+    <!-- App 1: 既存アプリ -->
+    <div class="app-card">
+      <div class="app-card-image">
+        <img src="image.jpg" alt="KumoNestアプリ画像">
+      </div>
+      <div class="app-card-text">
+        <span class="app-tag">フラッシュカード</span>
+        <h3>KumoNest</h3>
+        <p>あなたの学習をシンプルに、効率的に。スマートなフラッシュカードで知識を定着させましょう。</p>
+        <ul class="app-features">
+          <li>学習データのローカル管理</li>
+          <li>カスタマイズ可能な設定</li>
+          <li>ZIPバックアップ機能</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- App 2: 新しいアプリ -->
+    <div class="app-card reverse">
+      <div class="app-card-image">
+        <img src="shakaifukushishi.jpg" alt="社会福祉士対策アプリ">
+      </div>
+      <div class="app-card-text">
+        <span class="app-tag">資格対策</span>
+        <h3>社会福祉士対策</h3>
+        <p>合格を勝ち取ろう。基礎から本番レベルまで対応した、本格的な試験対策アプリです。</p>
+        <ul class="app-features">
+          <li>925題の頻出問題を収録</li>
+          <li>問題傾向を徹底分析</li>
+          <li>基礎〜本番レベルまで対応</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </main>
 
 <footer>
