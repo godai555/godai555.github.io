@@ -1,337 +1,70 @@
-/* ===== Base ===== */
-*, *::before, *::after { box-sizing: border-box; }
-
 body {
   margin: 0;
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: #f7f8fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f9fafb;
   color: #111;
 }
 
-/* ===== Header ===== */
+/* ヘッダー */
 .header {
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
-  z-index: 100;
-  border-bottom: 1px solid rgba(0,0,0,0.07);
+  border-bottom: 1px solid #eee;
 }
 
 .container {
   max-width: 1000px;
   margin: auto;
-  padding: 16px 24px;
+  padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .logo {
-  font-family: 'Syne', sans-serif;
   font-size: 20px;
-  font-weight: 800;
-  margin: 0;
-  letter-spacing: -0.5px;
+  font-weight: 600;
 }
 
 nav a {
-  margin-left: 24px;
+  margin-left: 20px;
   text-decoration: none;
-  color: #666;
+  color: #555;
   font-weight: 500;
-  font-size: 14px;
-  transition: color 0.2s;
 }
 
-nav a:hover { color: #000; }
+nav a:hover {
+  color: #000;
+}
 
-/* ===== Hero ===== */
+/* ヒーロー */
 .hero {
   max-width: 1000px;
-  margin: 80px auto 20px;
-  padding: 0 24px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-eyebrow {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #888;
-  margin: 0 0 16px;
+  margin: 60px auto;
+  padding: 20px;
+  text-align: center;
 }
 
 .hero-content h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(32px, 5vw, 52px);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-  margin: 0 0 16px;
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
-.hero-sub {
-  color: #777;
-  font-size: 17px;
-  margin: 0;
+.hero-content p {
+  color: #666;
+  margin-bottom: 30px;
 }
 
-/* Decorative circles */
-.hero-decoration { position: absolute; top: 0; right: 0; width: 300px; height: 300px; pointer-events: none; }
-.deco-circle {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.06;
-}
-.deco-1 { width: 280px; height: 280px; background: #000; top: -80px; right: -80px; }
-.deco-2 { width: 160px; height: 160px; background: #000; top: 20px; right: 60px; }
-
-/* ===== Apps Section ===== */
-.apps-section {
-  padding: 60px 24px 80px;
-}
-
-.apps-container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.section-label {
-  font-family: 'Syne', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #aaa;
-  margin: 0 0 32px;
-}
-
-/* ===== App Card ===== */
-.app-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-radius: 24px;
-  overflow: hidden;
-  margin-bottom: 28px;
-  min-height: 400px;
-  box-shadow: 0 4px 40px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.app-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 50px rgba(0,0,0,0.13);
-}
-
-.app-card--dark { background: #0f1923; color: #fff; }
-.app-card--light { background: #ffffff; color: #111; }
-
-/* Content side */
-.app-card__content {
-  padding: 48px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 16px;
-}
-
-.app-card__meta { display: flex; align-items: center; gap: 10px; }
-
-.app-tag {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-  border-radius: 100px;
-  padding: 4px 12px;
-}
-
-.app-tag--cyan {
-  background: rgba(0, 180, 200, 0.1);
-  color: #0098a8;
-}
-
-.app-card__title {
-  font-family: 'Syne', sans-serif;
-  font-size: 30px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  margin: 0;
-}
-
-.app-card__desc {
-  font-size: 14px;
-  line-height: 1.75;
-  margin: 0;
-  opacity: 0.75;
-}
-
-/* Feature list */
-.app-features {
-  list-style: none;
-  margin: 4px 0 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.app-features li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  font-weight: 500;
-  opacity: 0.85;
-}
-
-.feature-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.6);
-  flex-shrink: 0;
-}
-
-.feature-dot--cyan { background: #00b4c8; }
-
-/* Google Play button */
-.btn-play {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 22px;
-  border-radius: 100px;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s;
-  align-self: flex-start;
-  margin-top: 4px;
-}
-
-.btn-play--light {
-  background: #fff;
-  color: #111;
-}
-
-.btn-play--light:hover {
-  background: #f0f0f0;
-  transform: translateX(2px);
-}
-
-.btn-play--dark {
-  background: #111;
-  color: #fff;
-}
-
-.btn-play--dark:hover {
-  background: #333;
-  transform: translateX(2px);
-}
-
-/* ===== Visual Side ===== */
-.app-card__visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-}
-
-/* Exam app mockup */
-.app-card__visual--exam {
-  background: linear-gradient(135deg, #1a2a3a 0%, #0d1b2a 100%);
-}
-
-.mockup-screen {
-  background: #1e2d3d;
+.hero-image {
+  width: 100%;
+  max-width: 600px;
   border-radius: 16px;
-  padding: 20px;
-  width: 100%;
-  max-width: 260px;
-  border: 1px solid rgba(255,255,255,0.07);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.mockup-bar {
-  width: 60px;
-  height: 4px;
-  background: #3a8bff;
-  border-radius: 4px;
-  margin-bottom: 16px;
-}
-
-.mockup-question {
-  font-size: 12px;
-  color: rgba(255,255,255,0.85);
-  line-height: 1.6;
-  margin-bottom: 14px;
-  background: rgba(255,255,255,0.06);
-  padding: 10px 12px;
-  border-radius: 8px;
-}
-
-.mockup-choices { display: flex; flex-direction: column; gap: 6px; }
-
-.mockup-choice {
-  font-size: 11px;
-  color: rgba(255,255,255,0.7);
-  background: rgba(255,255,255,0.05);
-  padding: 8px 12px;
-  border-radius: 8px;
-}
-
-.mockup-choice--correct {
-  background: rgba(50, 200, 120, 0.2);
-  color: #6febb6;
-  border: 1px solid rgba(50, 200, 120, 0.3);
-}
-
-.mockup-correct-badge {
-  font-size: 11px;
-  color: #6febb6;
-  margin-top: 10px;
-  font-weight: 600;
-}
-
-/* PAIRLO visual */
-.app-card__visual--pairlo {
-  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
-}
-
-.pairlo-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  width: 100%;
-  max-width: 220px;
-}
-
-.pairlo-tile {
-  background: #26c6da;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 18px 10px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,150,180,0.2);
-  transition: transform 0.2s;
-}
-
-.pairlo-tile--selected {
-  background: #0097a7;
-  box-shadow: 0 4px 16px rgba(0,100,130,0.35);
-  transform: scale(1.04);
-}
-
-/* ===== Policy page ===== */
+/* ポリシー */
 .policy {
   display: flex;
   justify-content: center;
@@ -340,7 +73,6 @@ nav a:hover { color: #000; }
 
 .card {
   max-width: 800px;
-  width: 100%;
   background: white;
   padding: 30px;
   border-radius: 16px;
@@ -351,37 +83,11 @@ pre {
   white-space: pre-wrap;
   font-size: 14px;
   line-height: 1.7;
-  font-family: inherit;
 }
 
-/* ===== Footer ===== */
+/* フッター */
 footer {
   text-align: center;
   padding: 40px 20px;
-  color: #aaa;
-  font-size: 13px;
-  border-top: 1px solid rgba(0,0,0,0.06);
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 700px) {
-  .app-card {
-    grid-template-columns: 1fr;
-  }
-
-  .app-card__visual {
-    min-height: 220px;
-    padding: 30px 24px;
-  }
-
-  .app-card__content {
-    padding: 32px 28px;
-  }
-
-  /* Flip order for PAIRLO on mobile */
-  .app-card--light .app-card__visual {
-    order: -1;
-  }
-
-  .hero { margin-top: 48px; }
+  color: #777;
 }
