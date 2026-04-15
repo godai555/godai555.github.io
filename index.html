@@ -151,6 +151,56 @@
       font-weight: 500;
     }
 
+    /* ライトボックス */
+    .app-card-image img {
+      cursor: zoom-in;
+    }
+
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      backdrop-filter: blur(6px);
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      animation: zoomIn 0.2s ease;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .lightbox-close:hover {
+      opacity: 1;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
     /* ヒーロー調整 */
     .hero {
       padding-bottom: 0;
@@ -193,7 +243,7 @@
     <!-- App 1: 既存アプリ -->
     <div class="app-card">
       <div class="app-card-image">
-        <img src="image.jpg" alt="KumoNestアプリ画像">
+        <img src="image.jpg" alt="KumoNestアプリ画像" onclick="openLightbox(this)">
       </div>
       <div class="app-card-text">
         <span class="app-tag">フラッシュカード</span>
@@ -216,7 +266,7 @@
     <!-- App 2: 新しいアプリ -->
     <div class="app-card reverse">
       <div class="app-card-image">
-        <img src="shakaifukushishi.jpg" alt="社会福祉士対策アプリ">
+        <img src="shakaifukushishi.jpg" alt="社会福祉士対策アプリ" onclick="openLightbox(this)">
       </div>
       <div class="app-card-text">
         <span class="app-tag">資格対策</span>
@@ -238,6 +288,26 @@
 <footer>
   <p>© 2026 KumoNest. All rights reserved.</p>
 </footer>
+
+<!-- ライトボックス -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function openLightbox(img) {
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox-img').alt = img.alt;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
 
 </body>
 </html>
