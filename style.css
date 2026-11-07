@@ -1,76 +1,109 @@
-/* KumoNest（蜘蛛の巣）— 共通スタイル */
+/* KumoNest — 共通スタイル（すべてのページで読み込む） */
 :root {
-  --silk: #F3F4F6;       /* ページの地：絹のような薄い灰 */
-  --paper: #FFFFFF;
-  --ink: #1C2030;        /* 文字 */
-  --mute: #5C6273;       /* 補足 */
-  --thread: #CDD2DC;     /* 糸（区切り線） */
-  --night: #141A2B;      /* 夜明け前の空：ヒーローの地 */
-  --silver: #AEB8CB;     /* 夜の糸 */
-  --dew: #3E9AA8;        /* 青緑：リンク・ボタン */
-  --dew-deep: #2B7C89;
-  --gold: #C79A4B;       /* 思い出美術館だけ */
-  --museum: #1B1612;
-  --serif: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", "Noto Serif CJK JP", serif;
-  --sans: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Meiryo", "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
+  --sky: #EAF1F6;        /* ページの地：うすい空色 */
+  --cloud: #FFFFFF;      /* 面 */
+  --ink: #1E2A36;        /* 文字：青みのある墨 */
+  --slate: #5B6B7A;      /* 補足の文字 */
+  --line: #D3DFE8;       /* 区切り線 */
+  --ai: #2B5D8A;         /* 藍：リンク・ボタン */
+  --ai-deep: #1F4568;
+  --mist: #C9DCEA;       /* 霞の帯 */
+  --gold: #C79A4B;       /* 思い出美術館だけに使う金 */
+  --night: #1B1612;      /* 思い出美術館の地 */
+  --mincho: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", "Noto Serif CJK JP", serif;
+  --gothic: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Meiryo", "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --silk: #10141F; --paper: #171C29; --ink: #E7EAF0; --mute: #A0A7B8;
-    --thread: #2A3142; --dew: #7CC5CF; --dew-deep: #A6DCE3; color-scheme: dark;
+    --sky: #121A22; --cloud: #19232D; --ink: #E6EDF3; --slate: #9AABBA;
+    --line: #2A3743; --ai: #8DB8DF; --ai-deep: #B5D2EC; --mist: #22313F;
+    color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --silk: #10141F; --paper: #171C29; --ink: #E7EAF0; --mute: #A0A7B8;
-  --thread: #2A3142; --dew: #7CC5CF; --dew-deep: #A6DCE3; color-scheme: dark;
+  --sky: #121A22; --cloud: #19232D; --ink: #E6EDF3; --slate: #9AABBA;
+  --line: #2A3743; --ai: #8DB8DF; --ai-deep: #B5D2EC; --mist: #22313F;
+  color-scheme: dark;
 }
+
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
-  margin: 0; background: var(--silk); color: var(--ink);
-  font-family: var(--sans); font-size: 16px; line-height: 1.85; letter-spacing: .03em;
-  -webkit-text-size-adjust: 100%; text-size-adjust: 100%; overflow-wrap: anywhere;
+  margin: 0;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-wrap: anywhere;
+  background: var(--sky);
+  color: var(--ink);
+  font-family: var(--gothic);
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: 0.03em;
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: "palt" 0;
 }
 img { max-width: 100%; display: block; }
-a { color: var(--dew-deep); text-underline-offset: .2em; }
-a:hover { color: var(--dew); }
-:focus-visible { outline: 2px solid var(--dew); outline-offset: 3px; border-radius: 3px; }
-.wrap { max-width: 1100px; margin: 0 auto; padding: 0 max(24px, env(safe-area-inset-right)) 0 max(24px, env(safe-area-inset-left)); }
+a { color: var(--ai); text-underline-offset: 0.2em; }
+a:hover { color: var(--ai-deep); }
+:focus-visible { outline: 2px solid var(--ai); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 max(24px, env(safe-area-inset-right)) 0 max(24px, env(safe-area-inset-left)); }
 @media (max-width: 480px) { .wrap { padding: 0 max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left)); } }
 
-/* ヘッダー（トップでは夜の空に溶け込み、ほかのページでは絹の地） */
-.site-header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--silk) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--thread); }
+/* ヘッダー */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--sky) 86%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
-.brand svg { width: 26px; height: 26px; flex-shrink: 0; }
-.brand span { font-family: var(--serif); font-size: clamp(18px, 4.6vw, 21px); font-weight: 700; letter-spacing: .05em; }
+.brand svg { width: 34px; height: 24px; flex-shrink: 0; }
+.brand span { font-family: var(--mincho); font-size: clamp(18px, 4.6vw, 21px); font-weight: 600; letter-spacing: 0.04em; }
 .site-nav { display: flex; gap: 26px; }
-.site-nav a { color: var(--mute); text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 0; }
+.site-nav a { color: var(--slate); text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 0; }
 .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--ink); }
-@media (max-width: 640px) { .site-nav { gap: 16px; } .site-nav .nav-optional { display: none; } }
+@media (max-width: 640px) {
+  .site-nav { gap: 16px; }
+  .site-nav .nav-optional { display: none; }
+}
 
-.site-footer { border-top: 1px solid var(--thread); padding: 40px 0 48px; color: var(--mute); font-size: 13px; }
+/* フッター */
+.site-footer { border-top: 1px solid var(--line); padding: 40px 0 48px; color: var(--slate); font-size: 13px; }
 .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; }
 .site-footer nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
-.site-footer a { color: var(--mute); text-decoration: none; }
+.site-footer a { color: var(--slate); text-decoration: none; }
 .site-footer a:hover { color: var(--ink); text-decoration: underline; }
 
 /* ポリシーのページ */
 .doc { padding: 56px 0 88px; }
-.doc .wrap { max-width: 800px; }
-.doc-title { font-family: var(--serif); font-weight: 700; font-size: clamp(26px, 4vw, 34px); line-height: 1.4; margin: 0 0 6px; letter-spacing: .06em; }
-.doc-sub { color: var(--mute); margin: 0 0 28px; font-size: 14px; }
-.doc-body { background: var(--paper); border: 1px solid var(--thread); border-radius: 4px; padding: clamp(24px, 5vw, 48px); word-break: auto-phrase; }
-.doc-body pre { white-space: pre-wrap; word-break: break-word; font-family: var(--sans); font-size: 15px; line-height: 1.9; margin: 0; }
-.doc-body h2 { font-family: var(--serif); font-size: 22px; font-weight: 700; margin: 48px 0 8px; padding-bottom: 10px; border-bottom: 1px solid var(--thread); letter-spacing: .06em; }
+.doc .wrap { max-width: 780px; }
+.doc-title { font-family: var(--mincho); font-weight: 600; font-size: clamp(26px, 4vw, 34px); line-height: 1.4; margin: 0 0 6px; letter-spacing: 0.06em; }
+.doc-sub { color: var(--slate); margin: 0 0 28px; font-size: 14px; }
+.doc-body {
+  background: var(--cloud);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: clamp(24px, 5vw, 48px);
+}
+.doc-body { word-break: auto-phrase; }
+.doc-body pre {
+  white-space: pre-wrap; word-break: break-word;
+  font-family: var(--gothic); font-size: 15px; line-height: 1.9; margin: 0;
+}
+.doc-body h2 { font-family: var(--mincho); font-size: 22px; font-weight: 600; margin: 48px 0 8px; padding-bottom: 10px; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
 .doc-body h2:first-child { margin-top: 0; }
 .doc-body h3 { font-size: 16px; font-weight: 700; margin: 26px 0 4px; }
 .doc-body p { margin: 4px 0; font-size: 15px; }
 .doc-body p.li { padding-left: 1em; text-indent: -1em; }
-.doc-body .date { color: var(--mute); font-size: 13px; margin-top: 20px; }
+.doc-body .date { color: var(--slate); font-size: 13px; margin-top: 20px; }
 .doc-toc { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0 0 24px; font-size: 14px; }
-.notice { margin: 0 0 24px; padding: 14px 18px; border-radius: 4px; background: var(--paper); border: 1px solid var(--thread); border-left: 3px solid var(--dew); font-size: 14px; line-height: 1.8; }
+.notice {
+  margin: 0 0 24px; padding: 14px 18px; border-radius: 6px;
+  background: var(--sky); border: 1px solid var(--line); font-size: 14px; line-height: 1.8;
+}
 .notice a { font-weight: 700; }
