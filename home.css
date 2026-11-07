@@ -22,6 +22,18 @@
   .hero-link { animation-delay: .5s; }
 }
 @keyframes billow { from { transform: translateY(36px); opacity: 0; } }
+/* わきあがったあとは、雲が右から左へ、ゆっくり流れ続ける（奥の層ほどゆっくり＝奥行き） */
+@media (prefers-reduced-motion: no-preference) {
+  .clouds .track { animation: flow 150s linear infinite; will-change: transform; }
+  .clouds .c-back  .track { animation-duration: 240s; }
+  .clouds .c-front .track { animation-duration: 100s; }
+  /* 流れながら、雲ひとつずつがほんの少し上下にゆれる */
+  .clouds .track > g > g { animation: bob 9s ease-in-out infinite alternate; }
+  .clouds .track > g > g:nth-child(2n) { animation-duration: 12s; animation-delay: -4s; }
+  .clouds .track > g > g:nth-child(3n) { animation-duration: 10s; animation-delay: -7s; }
+}
+@keyframes flow { from { transform: translateX(0); } to { transform: translateX(-1600px); } }
+@keyframes bob { from { transform: translateY(0); } to { transform: translateY(-5px); } }
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 .hero-inner { position: relative; z-index: 1; }

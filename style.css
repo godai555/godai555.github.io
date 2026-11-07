@@ -62,7 +62,7 @@ a:hover { color: var(--ai-deep); }
 }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
-.brand svg { width: 34px; height: 24px; flex-shrink: 0; }
+.brand svg { width: 34px; height: 26.4px; flex-shrink: 0; }
 .brand span { font-family: var(--mincho); font-size: clamp(18px, 4.6vw, 21px); font-weight: 600; letter-spacing: 0.04em; }
 .site-nav { display: flex; gap: 26px; }
 .site-nav a { color: var(--slate); text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 0; }
