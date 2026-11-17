@@ -111,6 +111,22 @@
 .museum .feats li::before { background: var(--gold); }
 .museum .app-policy { color: #CDBFA9; }
 .museum .app-policy:hover { color: #F6EBD6; }
+.museum-art.app-shot { border-radius: 0; box-shadow: none; height: 100%; }
+.museum-art.app-shot img { height: 100%; aspect-ratio: auto; object-fit: cover; object-position: 50% 50%; }
+.museum-text .soon { background: rgba(199,154,75,.12); }
+.museum .btn-play, .museum .btn-play:hover,
+:root:not([data-theme="light"]) .museum .btn-play, :root:not([data-theme="light"]) .museum .btn-play:hover { background: var(--gold); color: #1B1612; }
+.museum .btn-play:hover { background: #D9B260; }
+
+/* お知らせの帯（思い出美術館の公開） */
+.news { display: block; background: var(--night); color: #F2E8D8; text-decoration: none; border-bottom: 1px solid rgba(199,154,75,.35); }
+.news-inner { display: flex; align-items: center; gap: 14px; padding-top: 14px; padding-bottom: 14px; font-size: 14px; }
+.news-tag { flex: none; color: var(--gold); border: 1px solid var(--gold); border-radius: 999px; padding: 0 10px; font-size: 11px; font-weight: 700; letter-spacing: .12em; line-height: 20px; }
+.news-text { flex: 1; min-width: 0; color: #DCCFB8; word-break: auto-phrase; text-wrap: pretty; }
+.news-text b { font-family: var(--mincho); font-weight: 600; color: #F6EBD6; letter-spacing: .04em; }
+.news-arrow { flex: none; color: var(--gold); transition: transform .3s ease; }
+.news:hover .news-arrow { transform: translateX(4px); }
+.news:hover .news-text { color: #F2E8D8; }
 
 /* 大切にしていること */
 .values { padding: clamp(64px, 9vw, 104px) 0; background: var(--cloud); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -147,6 +163,7 @@
   .app-grid.single .app { gap: 0; }
   .app-grid.single .app-text { padding-top: 20px; }
   .museum-art { min-height: 0; height: auto; aspect-ratio: 16 / 9; }
+  .museum-art.app-shot img { aspect-ratio: 16 / 9; }
   .policy-list li { grid-template-columns: 1fr; }
 }
 
